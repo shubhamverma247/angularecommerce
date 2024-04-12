@@ -21,7 +21,7 @@
 
 <div class="row">
   @for (item of productList; track 'productId') {
-  <div class="col-3">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
     <div class="box-shadow">
       <div class="card mt-2">
         <!-- <img class="img-fluid" [src]="item.productImageUrl" class="card-img-top" alt="..."> -->
@@ -66,8 +66,14 @@
               <span class="text-muted">(25)</span>
             </div>
             <div class="col-6">
-              <!-- <p class="text-end pb-0 mb-0" (click)="addToCart(item.productId)"><button class="btn  text-end btn-sm btn-success p-2"><i 
-                                        class="fa-solid fa-cart-plus fs-5" style="color: #0c0d0d;"></i></button></p> -->
+              <p class="text-end pb-0 mb-0" (click)="addToCart(item.productId)">
+                <button class="btn text-end btn-sm btn-success p-2">
+                  <i
+                    class="fa-solid fa-cart-plus fs-5"
+                    style="color: #0c0d0d"
+                  ></i>
+                </button>
+              </p>
             </div>
           </div>
         </div>

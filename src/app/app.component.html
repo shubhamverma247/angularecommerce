@@ -98,34 +98,48 @@
               class="dropdown-menu menuOnLeft rounded-0 mt-2"
               aria-labelledby="navbarDropdown3"
             >
-              <!-- @for (item of cartData; track $index) {
-                              <li class="p-2" >
-                                  <div class="d-flex w-100 border-bottom justify-content-evenly">
-                                      <div>
-                                          <img style="height: 70px !important;width: 100px !important;"
-                                              class="img-fluid     p-2" [src]="item.productImageUrl" alt="">
-                                      </div>
-  
-  
-                                      <div style="">
-                                          <a href="#" class="text-decoration-none text-black fw-semibold">
-                                              <p class="m-0 p-0">{{item.productShortName}}</p>
-                                          </a>
-                                          <p>1 <i class="fa-solid fa-xmark" style="color: #0d0d0d;"></i> $ {{item.productPrice}}</p>
-                                      </div>
-                                      <button type="button" class="btn fs-5 closeBtn" (click)="removeCartProduct(item.cartId)"><i
-                                              class="fa-solid fa-xmark"></i></button>
-                                  </div>
-  
-                              </li>
+              @for (item of cartData; track $index) {
+              <li class="p-2">
+                <div class="d-flex w-100 border-bottom justify-content-between">
+                  <div>
+                    <img
+                      style="height: 70px !important; width: 100px !important"
+                      class="img-fluid p-2"
+                      [src]="item.productImageUrl"
+                      alt=""
+                    />
+                  </div>
 
-                          } -->
+                  <div style="">
+                    <a
+                      href="#"
+                      class="text-decoration-none text-black fw-semibold"
+                    >
+                      <p class="m-0 p-0">{{ item.productShortName }}</p>
+                    </a>
+                    <p>
+                      1
+                      <i class="fa-solid fa-xmark" style="color: #0d0d0d"></i> $
+                      {{ item.productPrice }}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn fs-5 btn-close"
+                    (click)="removeCartProduct(item.cartId)"
+                  >
+                    <!-- <i class="fa-solid fa-xmark"></i> -->
+                  </button>
+                </div>
+              </li>
 
-              <!-- <li class="p-2">
+              }
+
+              <li class="p-2">
                 <div class="w-100">
                   <div class="d-flex justify-content-between">
                     <h6>SubTotal :</h6>
-                    <h6>$159.00</h6>
+                    <h6>$ {{ subtotal }}</h6>
                   </div>
                   <div class="d-flex justify-content-evenly mt-2">
                     <button class="btn btn-dark rounded-0 px-3">
@@ -138,7 +152,7 @@
                     >
                   </div>
                 </div>
-              </li> -->
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">

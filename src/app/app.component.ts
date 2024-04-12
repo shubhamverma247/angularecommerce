@@ -23,13 +23,43 @@ export class AppComponent {
     UserPassword: '',
   };
   loggedUSerData: any;
+  cartData: any[] = [];
+  subtotal: number = 0;
   constructor(private productSr: ProductService) {
     const localData = localStorage.getItem('ecomUser');
     if (localData != null) {
       this.loggedUSerData = JSON.parse(localData);
     }
+    this.productSr.onCartUpdated$?.subscribe((res) => {
+      this.getCart();
+    });
   }
-
+  ngOnInit() {
+    this.getCart();
+  }
+  getCart() {
+    this.productSr
+      .getCartDataByCustId(this.loggedUSerData.custId)
+      .subscribe((res: any) => {
+        if (res.result) {
+          this.cartData = res.data;
+          this.subtotal = this.cartData.reduce((acc, currentobj) => {
+            return acc.productPrice + currentobj.productPrice;
+          });
+        } else {
+          alert(res.message);
+        }
+      });
+  }
+  removeCartProduct(cartId: number) {
+    this.productSr.removeProduct(cartId).subscribe((res: any) => {
+      if (res.result) {
+        this.getCart();
+      } else {
+        alert(res.message);
+      }
+    });
+  }
   onRegister() {
     this.productSr.onRegister(this.userRegister).subscribe((res: any) => {
       if (res.result) {
